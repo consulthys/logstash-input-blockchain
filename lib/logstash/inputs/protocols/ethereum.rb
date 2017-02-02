@@ -48,7 +48,7 @@ class EthereumProtocol < BlockchainProtocol
 
   def unhex(data, num_keys)
     data.each do |key, value|
-      next if !value || value.kind_of?(Array)
+      next if value.nil? or value.kind_of?(Array)
 
       if num_keys.include? key
         data[key] = value.to_decimal()
