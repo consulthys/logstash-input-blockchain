@@ -1,0 +1,237 @@
+{
+  "template": "ethereum",
+  "mappings": {
+    "block": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "keyword"
+        },
+        "difficulty": {
+          "type": "long"
+        },
+        "extraData": {
+          "type": "keyword"
+        },
+        "gasLimit": {
+          "type": "long"
+        },
+        "gasUsed": {
+          "type": "long"
+        },
+        "hash": {
+          "type": "keyword"
+        },
+        "logsBloom": {
+          "type": "keyword"
+        },
+        "miner": {
+          "type": "keyword"
+        },
+        "mixHash": {
+          "type": "keyword"
+        },
+        "nonce": {
+          "type": "keyword"
+        },
+        "number": {
+          "type": "long"
+        },
+        "parentHash": {
+          "type": "keyword"
+        },
+        "receiptsRoot": {
+          "type": "keyword"
+        },
+        "sha3Uncles": {
+          "type": "keyword"
+        },
+        "size": {
+          "type": "long"
+        },
+        "stateRoot": {
+          "type": "keyword"
+        },
+        "timestamp": {
+          "type": "long"
+        },
+        "totalDifficulty": {
+          "type": "long"
+        },
+        "transactionsRoot": {
+          "type": "keyword"
+        },
+        "tx_count": {
+          "type": "long"
+        },
+        "tx_info": {
+          "properties": {
+            "blockHash": {
+              "type": "keyword"
+            },
+            "blockNumber": {
+              "type": "long"
+            },
+            "from": {
+              "type": "keyword"
+            },
+            "gas": {
+              "type": "long"
+            },
+            "gasPrice": {
+              "type": "long"
+            },
+            "hash": {
+              "type": "keyword"
+            },
+            "input": {
+              "type": "keyword"
+            },
+            "nonce": {
+              "type": "keyword"
+            },
+            "r": {
+              "type": "keyword"
+            },
+            "s": {
+              "type": "keyword"
+            },
+            "to": {
+              "type": "keyword"
+            },
+            "transactionIndex": {
+              "type": "long"
+            },
+            "v": {
+              "type": "keyword"
+            },
+            "value": {
+              "type": "keyword"
+            }
+          }
+        },
+        "uncles": {
+          "type": "keyword"
+        }
+      }
+    },
+    "transaction": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "keyword"
+        },
+        "block": {
+          "properties": {
+            "difficulty": {
+              "type": "long"
+            },
+            "extraData": {
+              "type": "keyword"
+            },
+            "gasLimit": {
+              "type": "long"
+            },
+            "gasUsed": {
+              "type": "long"
+            },
+            "hash": {
+              "type": "keyword"
+            },
+            "logsBloom": {
+              "type": "keyword"
+            },
+            "miner": {
+              "type": "keyword"
+            },
+            "mixHash": {
+              "type": "keyword"
+            },
+            "nonce": {
+              "type": "keyword"
+            },
+            "number": {
+              "type": "long"
+            },
+            "parentHash": {
+              "type": "keyword"
+            },
+            "receiptsRoot": {
+              "type": "keyword"
+            },
+            "sha3Uncles": {
+              "type": "keyword"
+            },
+            "size": {
+              "type": "long"
+            },
+            "stateRoot": {
+              "type": "keyword"
+            },
+            "timestamp": {
+              "type": "long"
+            },
+            "totalDifficulty": {
+              "type": "long"
+            },
+            "transactionsRoot": {
+              "type": "keyword"
+            },
+            "tx_count": {
+              "type": "long"
+            },
+            "uncles": {
+              "type": "keyword"
+            }
+          }
+        },
+        "blockHash": {
+          "type": "keyword"
+        },
+        "blockNumber": {
+          "type": "long"
+        },
+        "from": {
+          "type": "keyword"
+        },
+        "gas": {
+          "type": "long"
+        },
+        "gasPrice": {
+          "type": "long"
+        },
+        "hash": {
+          "type": "keyword"
+        },
+        "input": {
+          "type": "keyword"
+        },
+        "nonce": {
+          "type": "keyword"
+        },
+        "r": {
+          "type": "keyword"
+        },
+        "s": {
+          "type": "keyword"
+        },
+        "to": {
+          "type": "keyword"
+        },
+        "transactionIndex": {
+          "type": "long"
+        },
+        "v": {
+          "type": "keyword"
+        },
+        "value": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

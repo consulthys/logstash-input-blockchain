@@ -1,5 +1,5 @@
 {
-  "template": "blocks",
+  "template": "bitcoin",
   "mappings": {
     "transaction": {
       "properties": {
@@ -271,7 +271,7 @@
           "type": "long"
         },
         "@version": {
-          "type": "string"
+          "type": "keyword"
         },
         "merkleroot": {
           "type": "keyword"

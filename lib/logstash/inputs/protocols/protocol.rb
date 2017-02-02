@@ -4,10 +4,11 @@ require 'uri'
 require 'json'
 
 class BlockchainProtocol
-  def initialize(host, port, user, pass)
+  def initialize(host, port, user, pass, logger)
     @http = Net::HTTP.new(host, port)
     @user = user
     @password = pass
+    @logger = logger
   end
 
   # returns the block at the given height

@@ -63,9 +63,9 @@ class LogStash::Inputs::Blockchain < LogStash::Inputs::Base
 
     case @protocol
       when 'ethereum'
-        @blockchain = EthereumProtocol.new(@host, @port, @user, @password)
+        @blockchain = EthereumProtocol.new(@host, @port, @user, @password, @logger)
       else
-        @blockchain = BitcoinProtocol.new(@host, @port, @user, @password)
+        @blockchain = BitcoinProtocol.new(@host, @port, @user, @password, @logger)
     end
 
     @logger.info('Setting up blockchain RPC client', :protocol => @protocol, :host => @host, :port => @port)
@@ -96,6 +96,8 @@ class LogStash::Inputs::Blockchain < LogStash::Inputs::Base
         # add some information
         block_data['tx_count'] = tx_info.length
 
+        @logger.debug? && @logger.debug('Found block', :height => current_height, :block => block_data)
+
         # enqueue events according to granularity
         case @granularity
           when 'transaction'
@@ -125,7 +127,7 @@ class LogStash::Inputs::Blockchain < LogStash::Inputs::Base
       # we want to be able to abort the sleep
       # Stud.stoppable_sleep will frequently evaluate the given block
       # and abort the sleep(@interval) if the return value is true
-      Stud.stoppable_sleep(@interval) { stop? }
+      Stud.stoppable_sleep(@interval) { stop? } unless @interval < 1
     end # loop
   end # def run
 

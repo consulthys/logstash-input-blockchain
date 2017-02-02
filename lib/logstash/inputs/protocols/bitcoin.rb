@@ -3,8 +3,8 @@ require 'logstash/inputs/protocols/protocol'
 require 'date'
 
 class BitcoinProtocol < BlockchainProtocol
-  def initialize(host, port, user, pass)
-    super(host, port, user, pass)
+  def initialize(host, port, user, pass, logger)
+    super(host, port, user, pass, logger)
   end
 
   # returns a JSON body to be sent to the Bitcoin JSON-RPC endpoint
@@ -18,7 +18,7 @@ class BitcoinProtocol < BlockchainProtocol
     begin
       make_rpc_call('getblockcount')
     rescue JSONRPCError, java.lang.Exception => e
-      p e
+      @logger.warn? && @logger.warn('Could not find latest block count', :exc => e)
     end
   end
 
@@ -38,8 +38,7 @@ class BitcoinProtocol < BlockchainProtocol
         tx = make_rpc_call("decoderawtransaction", tx_hash)
         tx_info << tx
       rescue JSONRPCError, java.lang.Exception => e
-        #@logger.warn? && @logger.warn('Could not find any information about transaction', :tx => txid)
-        p e
+        @logger.warn? && @logger.warn('Could not find any information about transaction', :tx => txid)
       end
     }
     timestamp =  Time.at(block_data['time']).utc.to_datetime.iso8601(3)

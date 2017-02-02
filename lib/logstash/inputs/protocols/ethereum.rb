@@ -5,10 +5,10 @@ require 'date'
 class EthereumProtocol < BlockchainProtocol
 
   BLOCK_NUM_KEYS = %w(number difficulty totalDifficulty size gasLimit gasUsed timestamp)
-  TX_NUM_KEYS = %w(nonce blockNumber transactionIndex value gasPrice gas)
+  TX_NUM_KEYS = %w(nonce blockNumber transactionIndex gasPrice gas)
 
-  def initialize(host, port, user, pass)
-    super(host, port, nil, nil)
+  def initialize(host, port, user, pass, logger)
+    super(host, port, nil, nil, logger)
   end
 
   # returns a JSON body to be sent to the Ethereum JSON-RPC endpoint
@@ -22,7 +22,7 @@ class EthereumProtocol < BlockchainProtocol
     begin
       make_rpc_call('eth_blockNumber').to_decimal
     rescue JSONRPCError, java.lang.Exception => e
-      p e
+      @logger.warn? && @logger.warn('Could not find latest block count', :exc => e)
     end
   end
 
@@ -70,6 +70,6 @@ class String
 
   def convert_base(from, to)
     conv = self.to_i(from).to_s(to)
-    to == 10 ? conv.to_i : conv
+    to == 10 && conv.to_i <= 9223372036854775807 ? conv.to_i : conv
   end
 end
