@@ -31,7 +31,7 @@ rpcport=8332
 
 ```
 
-### Ethereum blockchin
+### Ethereum blockchain
 
 You need a fully synced [Ethereum client](http://ethdocs.org/en/latest/ethereum-clients/choosing-a-client.html). 
 Obviously, it will also work with partially synced clients but you'll not be able to pull recent blocks.
