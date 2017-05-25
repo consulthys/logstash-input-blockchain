@@ -30,7 +30,7 @@ class EthereumProtocol < BlockchainProtocol
   public
   def get_block(height)
     # get the block data
-    block_data = make_rpc_call('eth_getBlockByNumber', height, true)
+    block_data = make_rpc_call('eth_getBlockByNumber', hexprefix(height), true)
 
     # get all transaction data
     tx_info = block_data.delete('transactions')
@@ -56,6 +56,10 @@ class EthereumProtocol < BlockchainProtocol
         data[key] = value.to_string()
       end
     end
+  end
+  
+  def hexprefix(param)
+    return '0x' + param.to_s
   end
 end
 
