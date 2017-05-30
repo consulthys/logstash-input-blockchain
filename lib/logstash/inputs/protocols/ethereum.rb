@@ -51,9 +51,13 @@ class EthereumProtocol < BlockchainProtocol
       next if value.nil? or value.kind_of?(Array)
 
       if num_keys.include? key
-        data[key] = value.to_decimal()
+         if(value.methods.include? :to_decimal)
+           data[key] = value.to_decimal()
+		 end
       else
-        data[key] = value.to_string()
+	     if(value.methods.include? :to_string)
+            data[key] = value.to_string()
+	     end
       end
     end
   end
