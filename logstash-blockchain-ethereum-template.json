@@ -1,5 +1,5 @@
 {
-  "template": "ethereum",
+  "template": "ethereum*",
   "mappings": {
     "block": {
       "properties": {
@@ -58,7 +58,7 @@
           "type": "long"
         },
         "totalDifficulty": {
-          "type": "long"
+          "type": "keyword"
         },
         "transactionsRoot": {
           "type": "keyword"
@@ -176,7 +176,7 @@
               "type": "long"
             },
             "totalDifficulty": {
-              "type": "long"
+              "type": "keyword"
             },
             "transactionsRoot": {
               "type": "keyword"
